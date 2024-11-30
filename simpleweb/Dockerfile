@@ -2,7 +2,7 @@
 FROM node:22-alpine
 # set work directory
 WORKDIR /usr/app
-# copy all files from buid directory to WORKDIR
+# copy all files from build directory to WORKDIR
 COPY ./ /usr/app
 # install dependencies
 RUN npm install
