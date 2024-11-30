@@ -64,3 +64,7 @@ Temporary Items
 # Ignore all local history of files
 .history
 .ionide
+
+### Node + NPM ###
+**/node_modules/
+package-lock.json
