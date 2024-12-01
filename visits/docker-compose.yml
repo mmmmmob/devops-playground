@@ -3,7 +3,7 @@ version: "3"
 # services = containers we want to simultaneously run
 services:
   # first container: make a container from redis image
-  redes-server:
+  redis-server:
     image: "redis"
   # second container: build from Dockergile in a directory and map host port to container port
   node-app:
