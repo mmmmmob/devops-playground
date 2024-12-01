@@ -5,6 +5,9 @@ services:
     image: "redis"
   # second container: build from Dockergile in a directory and map host port to container port
   node-app:
+    # if anything happened that caused a stop to a program, what to do with this container?
+    # -> "no", always, on-failure, unless-stopped
+    restart: "no"
     build: .
     ports:
       - "8080:8080"

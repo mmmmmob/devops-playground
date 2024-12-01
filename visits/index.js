@@ -13,6 +13,7 @@ await client.set("visits", 0);
 
 app.get("/", async (req, res) => {
   // redis 4.0+ return promise so we have to use with async
+  // process.exit(0); -> voluntarily exit (code 1,2,... = there's a problem)
   try {
     // main logic
     const visits = await client.get("visits");
