@@ -1,5 +1,3 @@
-# make use of Docker Compose version 3 and above
-version: "3"
 # services = containers we want to simultaneously run
 services:
   # first container: make a container from redis image
