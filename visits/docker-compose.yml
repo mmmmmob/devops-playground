@@ -1,0 +1,12 @@
+# make use of Docker Compose version 3 and above
+version: "3"
+# services = containers we want to simultaneously run
+services:
+  # first container: make a container from redis image
+  redes-server:
+    image: "redis"
+  # second container: build from Dockergile in a directory and map host port to container port
+  node-app:
+    build: .
+    ports:
+      - "8080:8080"
