@@ -3,7 +3,7 @@ services:
   # first container: make a container from redis image
   redis-server:
     image: "redis"
-  # second container: build from Dockergile in a directory and map host port to container port
+  # second container: build from Dockerfile in a directory and map host port to container port
   node-app:
     # if anything happened that caused a stop to a program, what to do with this container?
     # -> "no", always, on-failure, unless-stopped
