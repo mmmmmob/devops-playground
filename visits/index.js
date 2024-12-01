@@ -1,16 +1,28 @@
 import express from "express";
-import redis from "redis";
+import { createClient } from "redis";
 
 const app = express();
-const client = redis.createClient();
+const client = createClient({
+  url: "redis://redis-server",
+  port: 6379,
+});
 
-client.set("visits", 0);
+await client.connect();
 
-app.get("/", (req, res) => {
-  client.get("visits", (err, visits) => {
+await client.set("visits", 0);
+
+app.get("/", async (req, res) => {
+  // redis 4.0+ return promise so we have to use with async
+  try {
+    // main logic
+    const visits = await client.get("visits");
     res.send(`Number of visits is ${visits}`);
-    client.set("visits", parseInt(visits) + 1); // Redis store value in string
-  });
+    await client.set("visits", parseInt(visits) + 1);
+  } catch (err) {
+    // catch errors
+    console.error("Error accessing Redis", err);
+    res.status(500).send("Something went wrong");
+  }
 });
 
 app.listen(8080, () => {
